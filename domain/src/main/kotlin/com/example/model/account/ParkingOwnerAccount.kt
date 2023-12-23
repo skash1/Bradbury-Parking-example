@@ -1,9 +1,20 @@
 package com.example.model.account
 
 import com.example.model.parking.Parking
+import jakarta.persistence.DiscriminatorValue
+import jakarta.persistence.Entity
+import jakarta.persistence.FetchType
+import jakarta.persistence.OneToMany
 
-class ParkingOwnerAccount : Account(AccountType.PARKING_OWNER) {
+@Entity
+@DiscriminatorValue("PARKING_OWNER")
+open class ParkingOwnerAccount : Account(AccountType.PARKING_OWNER) {
 
-    private var parkingUnits: List<Parking> = listOf()
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = PARKING_MAPPING, targetEntity = Parking::class)
+    open var parkingUnits: MutableList<Parking> = mutableListOf()
+
+    companion object {
+        const val PARKING_MAPPING = "owner"
+    }
 
 }
