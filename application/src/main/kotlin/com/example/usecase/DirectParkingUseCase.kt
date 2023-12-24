@@ -55,10 +55,11 @@ class DirectParkingUseCase @Autowired constructor(
             val parkPlace = parking.parkPlaces.firstOrNull { parkPlace -> parkPlace.transportUnits.contains(transport) }
                 ?: throw NotFoundException("Unable to find park place for transport ID ${transport.id}.")
             val parkingCost = parkPlaceCostCalculationService.getParkingCost(
+                parking,
                 transport,
                 Duration.between(parkPlace.takeMoment, Instant.now())
             )
-            paymentCheckoutService.pay(account, parkingCost)
+            paymentCheckoutService.pay(account, parking.owner!!, parkingCost)
             parkingManagerService.releaseParkPlace(account, parkPlace, transport)
         }
 }

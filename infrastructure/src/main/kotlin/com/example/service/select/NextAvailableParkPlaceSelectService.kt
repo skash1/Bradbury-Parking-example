@@ -15,6 +15,6 @@ class NextAvailableParkPlaceSelectService @Autowired constructor(
 ) : ParkPlaceSelectService {
     override fun getParkPlace(parking: Parking, transport: Transport): ParkPlace? {
         val suitableSizes = ParkPlaceSize.allWithSuitableCapacity(transport.transportType.requiredCapacity)
-        return parkPlaceRepository.findAllBySizeIn(suitableSizes).firstOrNull { it.isFree()}
+        return parkPlaceRepository.findAllByParkingAndSizeIn(parking, suitableSizes).firstOrNull { it.isFree()}
     }
 }
