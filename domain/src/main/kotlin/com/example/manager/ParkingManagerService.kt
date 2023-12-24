@@ -5,9 +5,9 @@ import com.example.model.parking.ParkPlace
 import com.example.model.parking.Parking
 import com.example.model.transport.Transport
 
-interface ParkingManager {
+interface ParkingManagerService {
 
-    fun getParkPlace(parking: Parking, transport: Transport): ParkPlace?
+    fun getAvailableParkPlaces(parking: Parking): List<ParkPlace>
 
     fun takeParkPlace(account: Account, parkPlace: ParkPlace, transport: Transport)
 

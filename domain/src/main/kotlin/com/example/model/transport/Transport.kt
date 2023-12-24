@@ -4,6 +4,7 @@ import com.example.model.account.Account
 import com.example.model.parking.ParkPlace
 import com.example.model.transport.Transport.Companion.TRANSPORT_TABLE_NAME
 import com.example.model.transport.Transport.Companion.TRANSPORT_TYPE_COLUMN_NAME
+import com.fasterxml.jackson.annotation.JsonBackReference
 import jakarta.persistence.*
 
 @Entity(name = TRANSPORT_TABLE_NAME)
@@ -13,10 +14,12 @@ abstract class Transport(@Transient val transportType: TransportType) {
     @GeneratedValue
     open var id: Long = 0
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = USER_ACCOUNT_MAPPING_COLUMN_NAME, nullable = false)
     open var owner: Account? = null
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = PARK_PLACE_MAPPING_COLUMN_NAME, nullable = true)
     open var takenParkPlace: ParkPlace? = null

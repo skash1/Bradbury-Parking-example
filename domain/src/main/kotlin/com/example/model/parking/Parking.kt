@@ -3,6 +3,7 @@ package com.example.model.parking
 import com.example.model.account.Account
 import com.example.model.cost.CostRate
 import com.example.model.parking.Parking.Companion.PARKING_TABLE_NAME
+import com.fasterxml.jackson.annotation.JsonBackReference
 import jakarta.persistence.*
 
 @Entity(name = PARKING_TABLE_NAME)
@@ -21,6 +22,7 @@ class Parking {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = COST_RATE_MAPPING, targetEntity = CostRate::class)
     var costRates: MutableList<CostRate> = mutableListOf()
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = PARKING_OWNER_ACCOUNT_MAPPING_COLUMN_NAME, nullable = false)
     var owner: Account? = null

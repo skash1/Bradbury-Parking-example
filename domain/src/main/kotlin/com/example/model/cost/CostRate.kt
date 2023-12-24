@@ -3,6 +3,7 @@ package com.example.model.cost
 import com.example.model.cost.CostRate.Companion.COST_RATE_TABLE_NAME
 import com.example.model.parking.Parking
 import com.example.model.transport.TransportType
+import com.fasterxml.jackson.annotation.JsonBackReference
 import jakarta.persistence.*
 import java.time.temporal.ChronoUnit
 
@@ -31,6 +32,7 @@ class CostRate {
     @Column(name = ACCOUNT_WHILE_PERIOD_COLUMN_NAME)
     val accountWholePeriod: Boolean = false
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = PARKING_MAPPING_COLUMN_NAME, nullable = false)
     val parking: Parking? = null

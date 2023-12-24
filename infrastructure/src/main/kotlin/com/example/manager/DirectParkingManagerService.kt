@@ -6,24 +6,16 @@ import com.example.model.parking.Parking
 import com.example.model.transport.Transport
 import com.example.repository.ParkPlaceRepository
 import com.example.repository.TransportRepository
-import com.example.service.ParkPlaceCostCalculationService
-import com.example.service.ParkPlaceSelectService
-import com.example.service.PaymentCheckoutService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
-import java.time.Duration
 import java.time.Instant
 
 @Component
-class DirectParkingManager @Autowired constructor(
-    private val parkPlaceSelectService: ParkPlaceSelectService,
-    private val parkPlaceCostCalculationService: ParkPlaceCostCalculationService,
-    private val paymentCheckoutService: PaymentCheckoutService,
+class DirectParkingManagerService @Autowired constructor(
     private val parkPlaceRepository: ParkPlaceRepository,
     private val transportRepository: TransportRepository
-) : ParkingManager {
-    override fun getParkPlace(parking: Parking, transport: Transport): ParkPlace? =
-        parkPlaceSelectService.getParkPlace(parking, transport)
+) : ParkingManagerService {
+    override fun getAvailableParkPlaces(parking: Parking): List<ParkPlace> = parking.parkPlaces.filter { it.isFree() }
 
     override fun takeParkPlace(account: Account, parkPlace: ParkPlace, transport: Transport) {
         transport.apply { takenParkPlace = parkPlace }
@@ -36,11 +28,6 @@ class DirectParkingManager @Autowired constructor(
     }
 
     override fun releaseParkPlace(account: Account, parkPlace: ParkPlace, transport: Transport) {
-        val parkingCost = parkPlaceCostCalculationService.getParkingCost(
-            transport,
-            Duration.between(parkPlace.takeMoment, Instant.now())
-        )
-        paymentCheckoutService.pay(account, parkingCost)
         transport.apply { takenParkPlace = null }
             .also { transportRepository.save(it) }
 
