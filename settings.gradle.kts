@@ -1,1 +1,2 @@
-rootProject.name = "demo2"
+rootProject.name = "bradbury-parking"
+include("domain", "application", "infrastructure", "gateway")
