@@ -43,7 +43,7 @@ INSERT INTO COST_RATE (id, account_whole_period, min_bound, max_bound, transport
 INSERT INTO COST_RATE (id, account_whole_period, min_bound, max_bound, transport_type, unit, amount, parking_id) VALUES (18, false, 1, 3, 'CAR', 'HOURS', 250, 2);
 INSERT INTO COST_RATE (id, account_whole_period, min_bound, max_bound, transport_type, unit, amount, parking_id) VALUES (19, false, 3, 24, 'CAR', 'HOURS', 200, 2);
 
-INSERT INTO COST_RATE (id, account_whole_period, min_bound, max_bound, transport_type, unit, amount, parking_id) VALUES (20, false, 0, 60, 'CAR', 'SECONDS', 1, 1);
-INSERT INTO COST_RATE (id, account_whole_period, min_bound, max_bound, transport_type, unit, amount, parking_id) VALUES (21, false, 0, 60, 'MOTORCYCLE', 'SECONDS', 1, 1);
-INSERT INTO COST_RATE (id, account_whole_period, min_bound, max_bound, transport_type, unit, amount, parking_id) VALUES (22, false, 0, 60, 'TRUCK', 'SECONDS', 1, 1);
+INSERT INTO COST_RATE (id, account_whole_period, min_bound, max_bound, transport_type, unit, amount, parking_id) VALUES (20, false, 0, 60, 'CAR', 'SECONDS', 0, 1);
+INSERT INTO COST_RATE (id, account_whole_period, min_bound, max_bound, transport_type, unit, amount, parking_id) VALUES (21, false, 0, 60, 'MOTORCYCLE', 'SECONDS', 0, 1);
+INSERT INTO COST_RATE (id, account_whole_period, min_bound, max_bound, transport_type, unit, amount, parking_id) VALUES (22, false, 0, 60, 'TRUCK', 'SECONDS', 0, 1);
 

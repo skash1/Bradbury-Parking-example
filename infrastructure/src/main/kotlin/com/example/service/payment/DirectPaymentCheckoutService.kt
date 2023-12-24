@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component
 class DirectPaymentCheckoutService @Autowired constructor(
     private val accountRepository: AccountRepository
 ) : PaymentCheckoutService {
+    //may use some payment strategies, like call to payment provider, etc.
     override fun pay(account: Account, cost: Cost) {
         account.apply {
             account.balance.amount = account.balance.amount.subtract(cost.amount)
