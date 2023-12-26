@@ -1,3 +1,6 @@
+The goal of this project is to practice in modelling, hexagonal architecture.\
+This is not intended as a production-ready application, hence there is no tests, security, monitoring, optimisations, etc.\
+
 Requirements:\
 Make a parking app.\
 There is a limited number of parking spaces available. They can be of 3 sizes - S, M and L.\
@@ -15,4 +18,3 @@ Each vehicle has its own rate. Also, the price depends on the parking time. For 
 Payment is considered when the vehicle leaves the parking lot.\
 
 Diagram of classes: https://drive.google.com/file/d/1AlbkCIUqMK-_bUCerxJtJVVy8TT6uYGt/view?usp=sharing\
-
