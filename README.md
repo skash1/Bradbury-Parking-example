@@ -1,5 +1,5 @@
 The goal of this project is to practice in modelling, hexagonal architecture.\
-This is not intended as a production-ready application, hence there is no tests, security, monitoring, optimisations, etc.\
+This is not intended as a production-ready application, hence there is no tests, security, monitoring, optimisations, etc.
 
 Requirements:\
 Make a parking app.\
@@ -17,4 +17,4 @@ Each vehicle has its own rate. Also, the price depends on the parking time. For 
 💲 3 hours and beyond - 200 usd per hour\
 Payment is considered when the vehicle leaves the parking lot.\
 
-Diagram of classes: https://drive.google.com/file/d/1AlbkCIUqMK-_bUCerxJtJVVy8TT6uYGt/view?usp=sharing\
+Diagram of classes: https://drive.google.com/file/d/1AlbkCIUqMK-_bUCerxJtJVVy8TT6uYGt/view?usp=sharing
