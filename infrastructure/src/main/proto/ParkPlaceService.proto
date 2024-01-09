@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+service ParkPlaceService {
+
+  rpc GetParkPlace(ParkPlaceId) returns (ParkPlaceResponse) {}
+
+  rpc ListParkPlace(ParkingId) returns (stream ParkPlaceResponse) {}
+
+  rpc ListParkPlaces(stream ParkPlaceId) returns (stream ParkPlaceResponse) {}
+
+}
+
+message ParkPlaceId {
+  int64 id = 1;
+}
+
+message ParkingId {
+  int64 id = 1;
+}
+
+message ParkPlaceResponse {
+  int32 code = 1;
+  repeated ParkPlace parkPlace = 2;
+}
+
+message ParkPlace {
+  int64 id = 1;
+  int32 size = 2;
+  int32 capacityUsed = 3;
+  int32 takeMoment = 4;
+  int64 parkingId = 5;
+  repeated int64 transportUnitId = 6;
+}

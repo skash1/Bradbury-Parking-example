@@ -11,4 +11,6 @@ interface ParkPlaceRepository : JpaRepository<ParkPlace, Long> {
 
     fun findAllByParkingAndSizeIn(parking: Parking, allowedSizes: List<ParkPlaceSize>): List<ParkPlace>
 
+    fun findAllByParkingId(parkingId: Long): List<ParkPlace>
+
 }

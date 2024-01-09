@@ -6,6 +6,7 @@ plugins {
 	kotlin("jvm") version "1.9.21"
 	kotlin("plugin.spring") version "1.9.21"
 	kotlin("plugin.jpa") version "1.9.21"
+	`maven-publish`
 }
 
 group = "com.example"
@@ -21,6 +22,7 @@ allprojects {
 	apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
 	apply(plugin = "org.springframework.boot")
 	apply(plugin = "io.spring.dependency-management")
+	apply(plugin = "maven-publish")
 	repositories {
 		mavenCentral()
 	}
@@ -44,6 +46,21 @@ allprojects {
 
 		testImplementation("org.springframework.boot:spring-boot-starter-test")
 		testImplementation("org.springframework.kafka:spring-kafka-test")
+	}
+
+	publishing {
+		repositories {
+			mavenLocal()
+		}
+		publications {
+			create<MavenPublication>("dev") {
+				groupId = rootProject.group.toString()
+				artifactId = rootProject.name + "-" + project.name
+				version = rootProject.version.toString()
+
+				from(components["java"])
+			}
+		}
 	}
 
 }
